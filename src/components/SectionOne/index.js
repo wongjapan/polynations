@@ -9,24 +9,24 @@ const SectionOne = () => {
     <div className="bgcl">
       <section>
         <div>
-          <div class="content">
+          <div className="content">
             <p>
               Catch the DeFi Buzz with
-              <img class="ftimg" src={logo} alt="" srcset="" />
+              <img className="ftimg" src={logo} alt="" srcSet="" />
             </p>
 
-            <button class="btn1">
+            <button className="btn1">
               <Link to="/Page_2">Button</Link>{" "}
             </button>
 
-            <button class="btn2">
+            <button className="btn2">
               <Link to="/Pages_3">Button</Link>{" "}
             </button>
 
-            <div class="img">
-              <img src={people} alt="" class="sdimg" />
+            <div className="img">
+              <img src={people} alt="" className="sdimg" />
             </div>
-            <div class="bottom">
+            <div className="bottom">
               <img src={vec1} alt="" />
             </div>
           </div>

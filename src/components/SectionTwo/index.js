@@ -18,7 +18,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcset="" /> BNB <span>BNB</span>
+              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -26,7 +26,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcset="" /> BNB <span>BNB</span>
+              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -34,7 +34,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcset="" /> BNB <span>BNB</span>
+              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -42,7 +42,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcset="" /> BNB <span>BNB</span>
+              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -50,7 +50,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcset="" /> BNB <span>BNB</span>
+              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -58,7 +58,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcset="" /> BNB <span>BNB</span>
+              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -66,7 +66,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcset="" /> BNB <span>BNB</span>
+              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
