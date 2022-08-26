@@ -1,0 +1,68 @@
+.cds .row {
+  padding-top: 2.4rem !important;
+}
+
+/* section  3 starts*/
+.cds:before {
+  content: "";
+  background-color: black;
+  border-bottom-left-radius: 160px;
+  width: 100%;
+  z-index: -1;
+  border-bottom-right-radius: 160px;
+  position: absolute;
+  left: 0px;
+  top: -125px;
+  height: 600px;
+}
+.cds {
+  width: 100%;
+
+  margin-bottom: 57px;
+
+  position: relative;
+  padding-top: 0;
+}
+.container-fluid .row {
+  padding-top: 3.5rem;
+}
+.cur .card {
+  background: #ffffff;
+  border: 14px solid #f0c21d;
+  border-radius: 50px;
+}
+.cur .card .overflow img {
+  border-radius: 33px;
+  padding: 10px;
+}
+.cur .card .card-body h4 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  color: #000000;
+}
+
+.cur .card .card-body p {
+  font-family: "Montserrat-light";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 33px;
+  color: #000000 !important;
+}
+
+/* cards.js pages */
+.cds .parag {
+  width: 53%;
+  height: auto;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 44px;
+  padding-top: 40px;
+  color: #f0c21d;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 50px;
+}

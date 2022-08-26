@@ -1,0 +1,137 @@
+section .content_sec {
+  width: 100%;
+  height: 100vh;
+  /* clip-path: polygon(11% 0, 90% 0, 100% 20%, 100% 80%, 88% 100%, 13% 100%, 0 81%, 0 20%);
+  border-radius: 200px !important; 
+  background: #F0C21D;
+  border-radius: 150px; */
+}
+
+.market_chartmain {
+  width: 100%;
+  height: auto;
+  background: url("./images/polygon.png") no-repeat;
+  background-size: cover !important;
+  background-position: center !important;
+  padding: 40px 40px 125px 0;
+}
+.bold {
+  font-weight: bold;
+}
+.market_chart ul {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  background: #fff;
+  clear: both;
+  overflow: hidden;
+  list-style: none;
+}
+.market_chart ul.no-bg {
+  background: none;
+}
+.market_chart li {
+  float: left;
+  width: 25%;
+}
+.market_chart li.first1 {
+  float: left;
+  width: 32%;
+  color: #5b5b5b;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #5b5b5b;
+}
+.market_chart li.third3 {
+  float: left;
+  width: 28%;
+}
+.market_chart li.fourth4 {
+  float: left;
+  width: 14%;
+  float: right;
+  text-align: right;
+  color: #5b5b5b;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #5b5b5b;
+}
+.market_chart li span {
+  font-size: 11px;
+}
+.market_chart li.first1 span {
+  color: #000000;
+}
+.market_chart ul.no-bg li {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+  align-items: center;
+
+  color: #161616;
+}
+.color-option {
+  color: #ff3e3e;
+}
+.align-right {
+  text-align: right;
+}
+.market_chart {
+  width: 1077px;
+  margin: 0 auto;
+}
+.coin_head {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 72px;
+  margin-left: 30%;
+  padding-top: 53px;
+
+  color: #ffffff;
+}
+.btn1,
+a {
+  color: #fff;
+  text-decoration: none;
+}
+.btn1 a:hover {
+  color: #ffffff;
+}
+.btn2 a {
+  color: #fff;
+  text-decoration: none;
+}
+.more_mark {
+  /* font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+margin-left: 81%;
+height: 28px;
+width: 100%;
+margin-bottom: 0;
+color: #161616; */
+
+  color: #161616;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  height: 28px;
+  margin-bottom: 0;
+  margin-left: 81%;
+  width: 20%;
+}
+.arr_img {
+  width: 11px;
+  height: 9px;
+}

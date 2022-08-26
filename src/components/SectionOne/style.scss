@@ -1,0 +1,61 @@
+.bgcl {
+  width: 100%;
+  height: auto;
+  /* margin-top: 550px; */
+  background-image: url("./images/topimg.png");
+  /* background-position: center;  */
+  background-size: cover;
+  /* height: 90vh; */
+}
+section .content p {
+  padding-top: 20%;
+  width: 699px;
+  height: 183px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 73px;
+  margin-left: 60px;
+}
+section .content p img {
+  margin-left: 30px;
+  width: 460px;
+}
+
+section .content button {
+  width: 261px;
+  height: 78px;
+
+  border-radius: 23px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 62px;
+  margin-top: 11%;
+  margin-left: 5%;
+  border: none;
+
+  color: #ffffff;
+}
+
+section .content .btn1 {
+  background: #f79e18;
+}
+section .content .btn2 {
+  background: #3e56dd;
+}
+
+section .content .sdimg {
+  width: 514px;
+  height: 542px;
+  margin-left: 51.5%;
+  margin-top: -29%;
+}
+
+section .content .bottom {
+  margin-left: 50%;
+
+  margin-top: -6%;
+  margin-bottom: 3%;
+}
