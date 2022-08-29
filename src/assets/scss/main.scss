@@ -18,3 +18,175 @@
 body {
   font-family: Montserrat;
 }
+
+.card_shape {
+  height: auto;
+  padding-top: 92px;
+  width: 1260px;
+  margin: 0 auto;
+  clear: both;
+  overflow: hidden;
+}
+.card_shape .card {
+  background: url("../images/card_shp.png") no-repeat center;
+  background-size: cover;
+  border-style: none;
+  float: left;
+  height: 623px;
+  margin: 100px 1% 0 1%;
+  width: 31.3%;
+}
+
+.card_shape .card .card-title {
+  font-family: "SF Pro Display";
+  margin-top: 12%;
+  margin-left: 18%;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+}
+.card-title_sec {
+  font-family: "SF Pro Display";
+  margin-top: 12%;
+  margin-left: 0%;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.card_shape .card .sub-card-title {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  margin-left: 0%;
+
+  color: #fff;
+}
+
+.card_shape .card .container {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  /* padding: 10px 15px; */
+}
+
+.card_shape .card .section_one_left ul li {
+  text-align: left;
+  font-family: "SF Pro Display_bold";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  list-style: none;
+  padding: 5px 0px;
+
+  color: #ffffff;
+}
+.card_shape .card .section_one_left {
+  float: left;
+  width: 40%;
+}
+.card_shape .card .section_one_right ul li {
+  text-align: right;
+  font-family: "SF Pro Display_bold";
+  font-style: normal;
+  font-size: 12px;
+  list-style: none;
+  padding: 5px 0px;
+  font-weight: 800;
+  font-size: 12px;
+
+  color: #f3901b;
+}
+
+.card_shape .card .section_one_right {
+  float: right;
+  width: 50%;
+  margin-right: 20px;
+}
+.poly {
+  width: 10px;
+  height: 10px;
+  margin-left: 10px;
+}
+
+.normal {
+  padding: 4px 5px;
+
+  background: #ffa030;
+  border-radius: 18px;
+}
+
+.card_shape .card .section_one_right span {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 14px;
+  /* line-height: 17px;s */
+
+  /* text-align: right; */
+
+  color: #ffffff;
+}
+
+.heading {
+  text-align: left;
+  font-family: "SF Pro Display_bold";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  list-style: none;
+  padding: 5px 0px;
+  margin-left: 5%;
+
+  color: #ffffff;
+}
+.heading .poly {
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+}
+
+.section_one_right .blank {
+  width: 126px;
+  height: 19px;
+  padding: 5px 28px;
+
+  background: #595959;
+  border-radius: 5px;
+}
+
+.btn_edit button {
+  width: 100%;
+  height: auto;
+  padding: 10px 20px;
+  background: url("../images/butback.png") no-repeat center;
+  background-size: contain;
+  border-style: none;
+  opacity: 0.6;
+  font-size: 14px;
+  /* Width:239px;
+Height:42px;
+background: #B47C28;
+border-style: none;
+border-radius: 30px;
+font-family: 'SF Pro Display';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+cursor: pointer; */
+  /* identical to box height */
+
+  /* color: #BEBEBE; */
+}
+.edit_cur {
+  margin-bottom: 150px;
+}

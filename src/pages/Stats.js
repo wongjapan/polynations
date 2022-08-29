@@ -1,5 +1,6 @@
 import React from "react";
 
+import polyStatus from "assets/images/poly_status.png";
 const Stats = () => {
   return (
     <div className="bgcl">
@@ -13,7 +14,7 @@ const Stats = () => {
                 <div className="section_one_left">
                   <ul>
                     <li className="first">
-                      Poly Status <img src="./img/poly_status.png" className="poly" />
+                      Poly Status <img alt="iimage" src={polyStatus} className="poly" />
                     </li>
                     <li className="first">Total Value Locked</li>
                     <li className="first">Estimated Rate</li>
@@ -35,7 +36,7 @@ const Stats = () => {
                     <ul>
                       <li className="first">
                         Daily ROI
-                        <img src="./img/poly_status.png" className="poly" />
+                        <img alt="iimage" src={polyStatus} className="poly" />
                       </li>
                       <li className="first">Yearly ROI</li>
                       <li className="first">Yearly ROI</li>
@@ -53,7 +54,7 @@ const Stats = () => {
               <div className="table_block">
                 <span className="heading">
                   Compunding Statistics
-                  <img src="./img/poly_status.png" className="poly" />
+                  <img alt="iimage" src={polyStatus} className="poly" />
                 </span>
                 <div className="section_one_left">
                   <ul>
@@ -84,15 +85,15 @@ const Stats = () => {
                   <ul>
                     <li className="first">
                       Hives Built
-                      <img src="./img/poly_status.png" className="poly" />
+                      <img alt="iimage" src={polyStatus} className="poly" />
                     </li>
                     <li className="first">
                       Hive Price
-                      <img src="./img/poly_status.png" className="poly" />
+                      <img alt="iimage" src={polyStatus} className="poly" />
                     </li>
                     <li className="first bottom-space">
                       Nectar Gathered
-                      <img src="./img/poly_status.png" className="poly" />
+                      <img alt="iimage" src={polyStatus} className="poly" />
                     </li>
                     <li className="first ">Nectar Gathered</li>
                     <li className="first">Nectar Gathered</li>
@@ -101,19 +102,19 @@ const Stats = () => {
                 <div className="section_one_right">
                   <ul>
                     <li>
-                      <input type="text" class="box"></input>
+                      <input type="text" className="box"></input>
                     </li>
                     <li>
-                      <input type="text" class="box"></input>
+                      <input type="text" className="box"></input>
                     </li>
                     <li className="bottom-space">
-                      <input type="text " class="box"></input>
+                      <input type="text " className="box"></input>
                     </li>
                     <li>
-                      <input type="text" class="box"></input>
+                      <input type="text" className="box"></input>
                     </li>
                     <li>
-                      <input type="text" class="box"></input>
+                      <input type="text" className="box"></input>
                     </li>
                   </ul>
                 </div>
@@ -138,15 +139,15 @@ const Stats = () => {
                   <ul>
                     <li className="first">
                       Hives Built
-                      <img src="./img/poly_status.png" className="poly" />
+                      <img alt="iimage" src={polyStatus} className="poly" />
                     </li>
                     <li className="first">
                       Hive Price
-                      <img src="./img/poly_status.png" className="poly" />
+                      <img alt="iimage" src={polyStatus} className="poly" />
                     </li>
                     <li className="first bottom-space">
                       Nectar Gathered
-                      <img src="./img/poly_status.png" className="poly" />
+                      <img alt="iimage" src={polyStatus} className="poly" />
                     </li>
 
                     <li className="first  ">Nectar Gathered</li>
@@ -156,19 +157,19 @@ const Stats = () => {
                 <div className="section_one_right">
                   <ul>
                     <li>
-                      <input type="text" class="box"></input>
+                      <input type="text" className="box"></input>
                     </li>
                     <li>
-                      <input type="text" class="box"></input>
+                      <input type="text" className="box"></input>
                     </li>
                     <li className="bottom-space">
-                      <input type="text" class="box"></input>
+                      <input type="text" className="box"></input>
                     </li>
                     <li>
-                      <input type="text" class="box"></input>
+                      <input type="text" className="box"></input>
                     </li>
                     <li>
-                      <input type="text" class="box"></input>
+                      <input type="text" className="box"></input>
                     </li>
                   </ul>
                 </div>

@@ -16,11 +16,11 @@ const SectionOne = () => {
             </p>
 
             <button className="btn1">
-              <Link to="/Page_2">Button</Link>{" "}
+              <Link to="/dashboard">Button</Link>{" "}
             </button>
 
             <button className="btn2">
-              <Link to="/Pages_3">Button</Link>{" "}
+              <Link to="/dashboard">Button</Link>{" "}
             </button>
 
             <div className="img">
