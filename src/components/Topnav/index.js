@@ -43,7 +43,7 @@ const Topnav = () => {
                 </p>
                 <p className="para">BNB</p>
               </div>
-              <div className="cont">
+              <div className="cont connect-btn">
                 <p className="para sec1">Connect</p>
                 <p className="img_bor">
                   <img src={polynationlogo} alt="" />
