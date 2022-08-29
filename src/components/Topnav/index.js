@@ -3,6 +3,8 @@ import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./style.scss";
 import logo from "./images/logo.png";
+import bnblogo from "./images/bnblogo.png";
+import polynationlogo from "./images/polynationlogo.png";
 
 const Topnav = () => {
   return (
@@ -35,12 +37,18 @@ const Topnav = () => {
               </Link>
             </Nav>
             <div className="d-flex">
-              <Link className="btn ms-3 text-white network-btn btn-primary" to={"/"}>
-                BNB
-              </Link>
-              <Link className="btn ms-3 text-white connect-btn btn-primary" to={"/"}>
-                Connect
-              </Link>
+              <div className="cont">
+                <p className="img">
+                  <img src={bnblogo} alt="" />
+                </p>
+                <p className="para">BNB</p>
+              </div>
+              <div className="cont">
+                <p className="para sec1">Connect</p>
+                <p className="img_bor">
+                  <img src={polynationlogo} alt="" />
+                </p>
+              </div>
             </div>
           </Navbar.Collapse>
         </div>

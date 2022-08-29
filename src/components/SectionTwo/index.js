@@ -1,4 +1,7 @@
 import React from "react";
+import arrowImages from "./images/arrow.png";
+import BNBLogoImages from "./images/BNBLogo.png";
+
 import "./style.scss";
 const SectionTwo = () => {
   return (
@@ -8,7 +11,7 @@ const SectionTwo = () => {
 
         <div className="market_chart">
           <p className="more_mark">
-            View More Market <img src="./img/arrow.png" alt="" className="arr_img" />{" "}
+            View More Market <img src={arrowImages} alt="" className="arr_img" />{" "}
           </p>
           <ul className="no-bg">
             <li className="first1">Name</li>
@@ -18,7 +21,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
+              <img src={BNBLogoImages} alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -26,7 +29,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
+              <img src={BNBLogoImages} alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -34,7 +37,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
+              <img src={BNBLogoImages} alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -42,7 +45,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
+              <img src={BNBLogoImages} alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -50,7 +53,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
+              <img src={BNBLogoImages} alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -58,7 +61,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
+              <img src={BNBLogoImages} alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>
@@ -66,7 +69,7 @@ const SectionTwo = () => {
           </ul>
           <ul>
             <li className="first1">
-              <img src="/img/Subtract.png" alt="" srcSet="" /> BNB <span>BNB</span>
+              <img src={BNBLogoImages} alt="" srcSet="" /> BNB <span>BNB</span>
             </li>
             <li className="bold">$289.2</li>
             <li className="color-option third3">-5.02%</li>

@@ -190,3 +190,95 @@ cursor: pointer; */
 .edit_cur {
   margin-bottom: 150px;
 }
+
+@media only screen and (max-width: 767px) {
+  .card_shape {
+    height: auto;
+    padding-top: 42px;
+    width: 320px;
+  }
+  .card_shape .card {
+    height: 510px;
+    margin: 50px 0 0 0;
+    width: 100%;
+  }
+  .card_shape .card .card-title {
+    font-family: "SF Pro Display";
+    margin: 31px 0 0 0 !important;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    width: 100%;
+    padding: 0px !important;
+  }
+  .card_shape .card .section_one_left ul li {
+    padding: 3px 0px;
+  }
+
+  footer .row {
+    width: 100%;
+    margin: auto;
+    padding: 30px 20px 50px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .col {
+    flex-basis: 100%;
+    padding: 20px;
+  }
+  footer p {
+    text-align: center;
+    margin: 11px 0 0 0;
+  }
+  .col img {
+    width: 60%;
+    padding: 0;
+    margin: 0 auto 20px;
+    display: block;
+  }
+  .col h3 {
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+  .card_shape .card .container {
+    margin-top: 12px;
+    clear: both;
+    overflow: hidden;
+  }
+
+  nav .collapse .cont {
+    margin: 0 0 35px 0;
+    text-align: center;
+  }
+
+  nav .collapse .navbar-nav .nav-item a {
+    text-align: center;
+  }
+  p.img_bor {
+    right: 3%;
+  }
+  .card_shape .card .section_one_right ul li {
+    padding: 3px 0px;
+  }
+  .card_shape .card .container {
+    margin-bottom: 0;
+  }
+  .card_shape .card {
+    display: block;
+  }
+  .small-form {
+    border: 1px solid #f3901b;
+    margin: -5px auto 9px;
+  }
+  .edit_cur.pd {
+    margin: 11px 0 96px;
+  }
+}

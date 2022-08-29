@@ -11,3 +11,56 @@
 
   margin: 0 7px;
 }
+nav .collapse .d-flex .cont {
+  display: flex;
+  position: relative;
+  align-items: center;
+  background: #d2d2d2;
+  border-radius: 16px;
+  padding: 5px 20px;
+  margin-left: 19px;
+}
+nav .collapse .d-flex .cont .para {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+
+  color: #161616;
+  padding-left: 5px;
+  padding-right: 10px;
+}
+nav .img_bor {
+  background: url("./images/circle.png") no-repeat;
+  background-size: contain;
+}
+
+/* ---- */
+
+p.img {
+  margin: 0px;
+}
+
+p.para {
+  margin: 0;
+}
+p.img img {
+  width: 28px;
+  border: 2px solid;
+  border-color: #3e56dd;
+  border-radius: 100px;
+  margin: 0 2px 0 1px;
+}
+p.img_bor {
+  position: absolute;
+  right: 10px;
+  top: -11px;
+}
+p.img_bor img {
+  padding: 9px;
+  width: 59px;
+}
+
+p.para.sec1 {
+  margin-right: 50px;
+}
