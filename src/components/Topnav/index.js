@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./style.scss";
 import logo from "./images/logo.png";
 import bnblogo from "./images/bnblogo.png";
-import polynationlogo from "./images/polynationlogo.png";
+import { ConnectButtonModal } from "./ConnectButtonModal";
 
 const Topnav = () => {
   return (
@@ -43,12 +43,7 @@ const Topnav = () => {
                 </p>
                 <p className="para">BNB</p>
               </div>
-              <div className="cont connect-btn">
-                <p className="para sec1">Connect</p>
-                <p className="img_bor">
-                  <img src={polynationlogo} alt="" />
-                </p>
-              </div>
+              <ConnectButtonModal />
             </div>
           </Navbar.Collapse>
         </div>

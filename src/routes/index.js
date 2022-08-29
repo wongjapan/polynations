@@ -1,8 +1,9 @@
-import Layout from "components/Layout";
-import Home from "pages/Home";
-import Stats from "pages/Stats";
 import React from "react";
+import Layout from "../components/Layout";
+import Home from "../pages/Home";
+import Stats from "../pages/Stats";
 import { Switch, Route } from "react-router-dom";
+
 const Routes = () => {
   return (
     <>

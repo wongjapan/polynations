@@ -1,0 +1,10 @@
+// import { createSelector, createStructuredSelector } from "reselect";
+
+// Auth Selectors
+export const providerState = (state) => state.auth.provider;
+export const signerState = (state) => state.auth.signer;
+export const accountState = (state) => state.auth.account;
+export const chainIdState = (state) => state.auth.chainId;
+
+// Select Chain Selectors
+export const chainIndex = (state) => state.selChain.index;

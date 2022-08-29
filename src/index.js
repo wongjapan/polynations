@@ -4,10 +4,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/scss/main.scss";
+
+import { DAppProvider, Goerli, Mainnet } from "@usedapp/core";
+import { getDefaultProvider } from "ethers";
+const config = {
+  readOnlyChainId: Mainnet.chainId,
+  readOnlyUrls: {
+    [Mainnet.chainId]: getDefaultProvider("mainnet"),
+    [Goerli.chainId]: getDefaultProvider("goerli")
+  }
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <DAppProvider config={config}>
+      <App />
+    </DAppProvider>
   </React.StrictMode>
 );
 
