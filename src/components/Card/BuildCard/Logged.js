@@ -3,14 +3,18 @@ import polyStatus from "assets/images/poly_status.png";
 import { Placeholder } from "react-bootstrap";
 import { useEtherBalance, useEthers } from "@usedapp/core";
 
-import "./style.scss";
+import { formatEther } from "ethers/lib/utils";
+
+import "../style.scss";
 import useHiveBuilt from "hooks/useHiveBuilt";
-import { getNumber } from "utils/helpers";
+import { formatNumber, getNumber, nFormatter } from "utils/helpers";
 import useNectarReward from "hooks/useNectarReward";
-const BuildCard = () => {
+import useMiner from "hooks/useMiner";
+const Logged = () => {
   const { account } = useEthers();
   const hivesBuilt = useHiveBuilt(account);
   const nectarReward = useNectarReward(account);
+  const accountMiner = useMiner(account);
   const walletBalance = useEtherBalance(account);
   return (
     <div className="card text-center">
@@ -23,18 +27,21 @@ const BuildCard = () => {
               Hives Built <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              {!hivesBuilt && (
+              {!accountMiner && (
                 <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
               )}
-              {hivesBuilt && <div className="clr-yellow fw-bold"> {getNumber(hivesBuilt)} Hives</div>}
+              {accountMiner && <div className="clr-yellow fw-bold"> {nFormatter(accountMiner)} Hives</div>}
             </div>
           </div>
           <div className="d-flex justify-content-between dashboard-card">
             <div>
-              Hive Price <img alt="iimage" src={polyStatus} className="poly-info" />
+              Hive Value <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              {!hivesBuilt && (
+                <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              )}
+              {hivesBuilt && <div className="clr-yellow fw-bold"> {formatNumber(formatEther(hivesBuilt) * 1)} Matic</div>}
             </div>
           </div>
           <div className="d-flex justify-content-between dashboard-card">
@@ -42,7 +49,10 @@ const BuildCard = () => {
               Nectar Gathered <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              {!nectarReward && (
+                <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              )}
+              {nectarReward && <div className="clr-yellow fw-bold"> {formatNumber(formatEther(nectarReward) * 1)} Matic</div>}
             </div>
           </div>
           <div className="d-flex justify-content-between dashboard-card mt-3">
@@ -72,4 +82,4 @@ const BuildCard = () => {
   );
 };
 
-export default BuildCard;
+export default Logged;

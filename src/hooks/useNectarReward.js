@@ -14,7 +14,6 @@ function useNectarReward(addr) {
       }
     ) ?? {};
   if (error) {
-    console.error(error.message);
     return undefined;
   }
   return value?.[0];
