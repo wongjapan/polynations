@@ -4,7 +4,7 @@ footer {
   border-top-left-radius: 150px;
   border-top-right-radius: 150px;
   padding: 39px 0 0px 0;
-  margin-top: 118px;
+  // margin-top: 118px;
 }
 
 .table_block {
@@ -14,23 +14,20 @@ footer {
 .section_one_right .box {
   width: 126px;
   height: 19px;
-  padding: 5px 8px;
-  background: #793434;
+  padding: 5px 28px;
+  background: #595959;
   border-radius: 5px;
   border: 0px;
   outline: none;
-  margin-left: 46px;
-  color: #fff;
 }
 
 span.heading {
   width: 100%;
-  width: 100%;
   float: left;
-  font-size: 12px;
+  font-size: 13px;
   font-style: italic;
   font-weight: normal;
-  margin-left: 22px;
+  // margin-left: 22px;
 }
 
 .row {
@@ -84,5 +81,4 @@ span.heading {
   color: #fff;
   font-size: 18px;
   line-height: 49px;
-  margin-bottom: 0;
 }
