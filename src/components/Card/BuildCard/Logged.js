@@ -10,12 +10,15 @@ import useHiveBuilt from "hooks/useHiveBuilt";
 import { formatNumber, getNumber, nFormatter } from "utils/helpers";
 import useNectarReward from "hooks/useNectarReward";
 import useMiner from "hooks/useMiner";
+import useRate from "hooks/useRate";
 const Logged = () => {
   const { account } = useEthers();
   const hivesBuilt = useHiveBuilt(account);
   const nectarReward = useNectarReward(account);
   const accountMiner = useMiner(account);
   const walletBalance = useEtherBalance(account);
+  const hiveRate = useRate();
+
   return (
     <div className="card text-center">
       <div className="card-body text-dark">
@@ -27,10 +30,10 @@ const Logged = () => {
               Hives Built <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              {!accountMiner && (
+              {!hivesBuilt && (
                 <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
               )}
-              {accountMiner && <div className="clr-yellow fw-bold"> {nFormatter(accountMiner)} Hives</div>}
+              {hivesBuilt && <div className="clr-yellow fw-bold"> {nFormatter(hivesBuilt)} Hives</div>}
             </div>
           </div>
           <div className="d-flex justify-content-between dashboard-card">
@@ -41,7 +44,7 @@ const Logged = () => {
               {!hivesBuilt && (
                 <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
               )}
-              {hivesBuilt && <div className="clr-yellow fw-bold"> {formatNumber(formatEther(hivesBuilt) * 1)} Matic</div>}
+              {hivesBuilt && <div className="clr-yellow fw-bold"> {formatNumber(formatEther(hivesBuilt.mul(hiveRate)) * 1)} Matic</div>}
             </div>
           </div>
           <div className="d-flex justify-content-between dashboard-card">
@@ -49,10 +52,10 @@ const Logged = () => {
               Nectar Gathered <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              {!nectarReward && (
+              {!accountMiner && (
                 <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
               )}
-              {nectarReward && <div className="clr-yellow fw-bold"> {formatNumber(formatEther(nectarReward) * 1)} Matic</div>}
+              {accountMiner && <div className="clr-yellow fw-bold"> {nFormatter(accountMiner)} Hives</div>}
             </div>
           </div>
           <div className="d-flex justify-content-between dashboard-card mt-3">
@@ -60,22 +63,44 @@ const Logged = () => {
               Honey Produced <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              {!nectarReward && (
+                <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              )}
+              {nectarReward && <div className="clr-yellow fw-bold"> {nFormatter(nectarReward)} Hives</div>}
             </div>
           </div>
-          <div className="d-flex justify-content-between dashboard-card">
+          <div className="d-flex justify-content-between dashboard-card mt-3">
             <div>
               Wallet Balance <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              {!walletBalance && (
+                <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              )}
+              {walletBalance && <div className="clr-yellow fw-bold"> {formatNumber(formatEther(walletBalance) * 1)} Matic</div>}
+            </div>
+          </div>
+          <div className="small-form mt-3">
+            <input className="text-area" type="text" id="fname" name="fname" />
+            <button className="max-btn">Max</button>
+          </div>
+          <div className="d-flex justify-content-between dashboard-card mt-0">
+            <div>
+              Estimated Yield <img alt="iimage" src={polyStatus} className="poly-info" />
+            </div>
+            <div>
+              {!walletBalance && (
+                <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              )}
+              {walletBalance && <div className="clr-yellow fw-bold"> {formatNumber(formatEther(walletBalance) * 1)} Hives</div>}
             </div>
           </div>
         </div>
       </div>
-      <div className="edit_cur">
-        <span className="btn_edit">
-          <button>Please Connect Your Wallet</button>
+
+      <div className="edit_cur pd">
+        <span className="btn_edit_page">
+          <button>Build Hives</button>
         </span>
       </div>
     </div>

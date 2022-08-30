@@ -21,7 +21,7 @@ const NotLogged = () => {
           </div>
           <div className="d-flex justify-content-between dashboard-card">
             <div>
-              Hive Price <img alt="iimage" src={polyStatus} className="poly-info" />
+              Hive Value <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
               <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
