@@ -17,7 +17,7 @@ const Topnav = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-between">
             <Nav>
-              <Link className="nav-link" to={"/home"}>
+              <Link className="nav-link" to={"/"}>
                 Home
               </Link>
               <Link className="nav-link" to={"/"}>
