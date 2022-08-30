@@ -6,9 +6,12 @@ import { utils } from "ethers";
 
 import config from "constants/config";
 import { Placeholder } from "react-bootstrap";
+import useRate from "hooks/useRate";
+import { nFormatter } from "utils/helpers";
 
 const MinerCard = () => {
   const contractBalance = useEtherBalance(config.CONTRACT_ADDRESS);
+  const hiveRate = useRate();
 
   return (
     <div className="card text-center">
@@ -38,7 +41,10 @@ const MinerCard = () => {
           <div className="d-flex justify-content-between dashboard-card">
             <div>Estimated Rate</div>
             <div>
-              <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              {!hiveRate && (
+                <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              )}
+              {hiveRate && <div className="clr-yellow fw-bold"> {nFormatter(hiveRate)} Hives / Matic</div>}
             </div>
           </div>
 

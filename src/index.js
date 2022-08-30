@@ -7,8 +7,7 @@ import "./assets/scss/main.scss";
 
 import { RbaChain } from "constants/RbaChain";
 
-import { DAppProvider, Mainnet, DEFAULT_SUPPORTED_CHAINS } from "@usedapp/core";
-import { getDefaultProvider } from "ethers";
+import { DAppProvider, DEFAULT_SUPPORTED_CHAINS } from "@usedapp/core";
 const config = {
   readOnlyChainId: RbaChain.chainId,
   readOnlyUrls: {
