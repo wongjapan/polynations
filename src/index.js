@@ -5,14 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/scss/main.scss";
 
-import { DAppProvider, Goerli, Mainnet } from "@usedapp/core";
+import { RbaChain } from "constants/RbaChain";
+
+import { DAppProvider, Mainnet, DEFAULT_SUPPORTED_CHAINS } from "@usedapp/core";
 import { getDefaultProvider } from "ethers";
 const config = {
-  readOnlyChainId: Mainnet.chainId,
+  readOnlyChainId: RbaChain.chainId,
   readOnlyUrls: {
-    [Mainnet.chainId]: getDefaultProvider("mainnet"),
-    [Goerli.chainId]: getDefaultProvider("goerli")
-  }
+    [RbaChain.chainId]: "https://preseed-testnet-1.roburna.com/"
+  },
+  networks: [...DEFAULT_SUPPORTED_CHAINS, RbaChain]
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
