@@ -58,10 +58,17 @@ describe("Miner Test", function () {
   it("allow hardfork", async function () {
     // console.log(buyer1);
     const balanceBefore = await provider.getBalance(token.address);
-    await token.hardfork();
+    await token.emergencyMaintenance();
     const balance = await provider.getBalance(token.address);
     console.log("token balance before :", formatEther(balanceBefore.toString()));
     console.log("token balance :", formatEther(balance.toString()));
     // expect(balance).to.equal(ethers.utils.parseEther("1"));
+  });
+
+  it("check reader function", async function () {
+    expect(await token.nectarRewards(buyer2.address)).to.equal(0);
+    expect(await token.getHivesSinceLastHatch(buyer2.address)).to.equal(0);
+    expect(await token.getMyHives(buyer2.address)).to.equal(0);
+    expect(await token.getMyMiners(buyer2.address)).to.equal(0);
   });
 });

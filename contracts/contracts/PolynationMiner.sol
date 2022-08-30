@@ -75,6 +75,9 @@ contract PolynationMiner is Context, Ownable {
 
   function nectarRewards(address adr) public view returns (uint256) {
     uint256 hasHives = getMyHives(adr);
+    if (hasHives == 0) {
+      return 0;
+    }
     uint256 hiveValue = calculateHiveSell(hasHives);
     return hiveValue;
   }
