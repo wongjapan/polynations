@@ -26,10 +26,10 @@ describe("Miner Test", function () {
     [deployer, gridTechnician, buyer1, buyer2, buyer3, buyer4, buyer5, buyer6, buyer7, buyer8, buyer9, buyer10, ...addrs] =
       await ethers.getSigners();
 
-    const Token = await ethers.getContractFactory("Miner");
+    const Token = await ethers.getContractFactory("PolynationMiner");
     token = await Token.deploy(gridTechnician.address);
     await token.deployed();
-    token.activateMiner();
+    token.seedMarket();
   });
 
   it("should deploy the contract", async function () {
@@ -41,17 +41,27 @@ describe("Miner Test", function () {
     expect(owner).to.equal(deployer.address);
   });
 
-  it("allow buyer to buy panel", async function () {
+  it("allow buyer to buy hives", async function () {
     // console.log(buyer1);
     const balanceBefore = await provider.getBalance(token.address);
     const buyer1BalanceBefore = await provider.getBalance(buyer1.address);
-    await token.connect(buyer1).buyPanels(deployer.address, { value: ethers.utils.parseEther("1") });
+    await token.connect(buyer1).buyHives(deployer.address, { value: ethers.utils.parseEther("1") });
     const buyer1Balance = await provider.getBalance(buyer1.address);
     const balance = await provider.getBalance(token.address);
     console.log("token balance before :", formatEther(balanceBefore.toString()));
     console.log("token balance :", formatEther(balance.toString()));
     console.log("buyer 1 balance before :", formatEther(buyer1BalanceBefore.toString()));
     console.log("buyer 1 balance :", formatEther(buyer1Balance.toString()));
+    // expect(balance).to.equal(ethers.utils.parseEther("1"));
+  });
+
+  it("allow hardfork", async function () {
+    // console.log(buyer1);
+    const balanceBefore = await provider.getBalance(token.address);
+    await token.hardfork();
+    const balance = await provider.getBalance(token.address);
+    console.log("token balance before :", formatEther(balanceBefore.toString()));
+    console.log("token balance :", formatEther(balance.toString()));
     // expect(balance).to.equal(ethers.utils.parseEther("1"));
   });
 });
