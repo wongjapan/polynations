@@ -15,17 +15,17 @@ contract PolynationMiner is Context, Ownable {
   uint256 private PSN = 10000;
   uint256 private PSNH = 5000;
 
-  uint256 private maintenanceFee = 42;
+  uint256 private maintenanceFee = 10;
   uint256 private maxFee = 100;
 
   bool private initialized = false;
 
   address payable private maintenanceFund;
-  mapping(address => uint256) private hatcheryMiners;
-  mapping(address => uint256) private claimedEggs;
+  mapping(address => uint256) private hiveMiner;
+  mapping(address => uint256) private claimedHives;
   mapping(address => uint256) private lastHatch;
   mapping(address => address) private referrals;
-  uint256 private marketEggs;
+  uint256 private marketHives;
 
   event RateChanged(uint256 rate, uint256 timestamp);
   event FeeChanged(uint256 fee, uint256 timestamp);
@@ -35,12 +35,12 @@ contract PolynationMiner is Context, Ownable {
   }
 
   function seedMarket() public payable onlyOwner {
-    require(marketEggs == 0);
+    require(marketHives == 0);
     initialized = true;
-    marketEggs = 108000000000;
+    marketHives = 108000000000;
   }
 
-  function hatchEggs(address ref) public {
+  function hatchHives(address ref) public {
     require(initialized);
 
     if (ref == msg.sender) {
@@ -51,42 +51,42 @@ contract PolynationMiner is Context, Ownable {
       referrals[msg.sender] = ref;
     }
 
-    uint256 eggsUsed = getMyEggs(msg.sender);
-    uint256 newMiners = SafeMath.div(eggsUsed, hatchRate);
-    hatcheryMiners[msg.sender] = SafeMath.add(hatcheryMiners[msg.sender], newMiners);
-    claimedEggs[msg.sender] = 0;
+    uint256 hivesUsed = getMyHives(msg.sender);
+    uint256 newMiners = SafeMath.div(hivesUsed, hatchRate);
+    hiveMiner[msg.sender] = SafeMath.add(hiveMiner[msg.sender], newMiners);
+    claimedHives[msg.sender] = 0;
     lastHatch[msg.sender] = block.timestamp;
 
-    claimedEggs[referrals[msg.sender]] = SafeMath.add(claimedEggs[referrals[msg.sender]], SafeMath.div(eggsUsed, 8));
-    marketEggs = SafeMath.add(marketEggs, SafeMath.div(eggsUsed, 5));
+    claimedHives[referrals[msg.sender]] = SafeMath.add(claimedHives[referrals[msg.sender]], SafeMath.div(hivesUsed, 8));
+    marketHives = SafeMath.add(marketHives, SafeMath.div(hivesUsed, 5));
   }
 
-  function sellEggs() public {
+  function sellHives() public {
     require(initialized);
-    uint256 hasEggs = getMyEggs(msg.sender);
-    uint256 eggValue = calculateEggSell(hasEggs);
-    uint256 fee = devFee(eggValue);
-    claimedEggs[msg.sender] = 0;
+    uint256 hasHives = getMyHives(msg.sender);
+    uint256 hiveValue = calculateHiveSell(hasHives);
+    uint256 fee = devFee(hiveValue);
+    claimedHives[msg.sender] = 0;
     lastHatch[msg.sender] = block.timestamp;
-    marketEggs = SafeMath.add(marketEggs, hasEggs);
+    marketHives = SafeMath.add(marketHives, hasHives);
     maintenanceFund.transfer(fee);
-    payable(msg.sender).transfer(SafeMath.sub(eggValue, fee));
+    payable(msg.sender).transfer(SafeMath.sub(hiveValue, fee));
   }
 
-  function beanRewards(address adr) public view returns (uint256) {
-    uint256 hasEggs = getMyEggs(adr);
-    uint256 eggValue = calculateEggSell(hasEggs);
-    return eggValue;
+  function nectarRewards(address adr) public view returns (uint256) {
+    uint256 hasHives = getMyHives(adr);
+    uint256 hiveValue = calculateHiveSell(hasHives);
+    return hiveValue;
   }
 
-  function buyEggs(address ref) public payable {
+  function buyHives(address ref) public payable {
     require(initialized);
-    uint256 eggsBought = calculateEggBuy(msg.value, SafeMath.sub(address(this).balance, msg.value));
-    eggsBought = SafeMath.sub(eggsBought, devFee(eggsBought));
+    uint256 HivesBought = calculateHiveBuy(msg.value, SafeMath.sub(address(this).balance, msg.value));
+    HivesBought = SafeMath.sub(HivesBought, devFee(HivesBought));
     uint256 fee = devFee(msg.value);
     maintenanceFund.transfer(fee);
-    claimedEggs[msg.sender] = SafeMath.add(claimedEggs[msg.sender], eggsBought);
-    hatchEggs(ref);
+    claimedHives[msg.sender] = SafeMath.add(claimedHives[msg.sender], HivesBought);
+    hatchHives(ref);
   }
 
   function calculateTrade(
@@ -101,16 +101,16 @@ contract PolynationMiner is Context, Ownable {
       );
   }
 
-  function calculateEggSell(uint256 eggs) public view returns (uint256) {
-    return calculateTrade(eggs, marketEggs, address(this).balance);
+  function calculateHiveSell(uint256 Hives) public view returns (uint256) {
+    return calculateTrade(Hives, marketHives, address(this).balance);
   }
 
-  function calculateEggBuy(uint256 eth, uint256 contractBalance) public view returns (uint256) {
-    return calculateTrade(eth, contractBalance, marketEggs);
+  function calculateHiveBuy(uint256 eth, uint256 contractBalance) public view returns (uint256) {
+    return calculateTrade(eth, contractBalance, marketHives);
   }
 
-  function calculateEggBuySimple(uint256 eth) public view returns (uint256) {
-    return calculateEggBuy(eth, address(this).balance);
+  function calculateHiveBuySimple(uint256 eth) public view returns (uint256) {
+    return calculateHiveBuy(eth, address(this).balance);
   }
 
   function devFee(uint256 amount) private view returns (uint256) {
@@ -122,16 +122,16 @@ contract PolynationMiner is Context, Ownable {
   }
 
   function getMyMiners(address adr) public view returns (uint256) {
-    return hatcheryMiners[adr];
+    return hiveMiner[adr];
   }
 
-  function getMyEggs(address adr) public view returns (uint256) {
-    return SafeMath.add(claimedEggs[adr], getEggsSinceLastHatch(adr));
+  function getMyHives(address adr) public view returns (uint256) {
+    return SafeMath.add(claimedHives[adr], getHivesSinceLastHatch(adr));
   }
 
-  function getEggsSinceLastHatch(address adr) public view returns (uint256) {
+  function getHivesSinceLastHatch(address adr) public view returns (uint256) {
     uint256 secondsPassed = min(hatchRate, SafeMath.sub(block.timestamp, lastHatch[adr]));
-    return SafeMath.mul(secondsPassed, hatcheryMiners[adr]);
+    return SafeMath.mul(secondsPassed, hiveMiner[adr]);
   }
 
   function min(uint256 a, uint256 b) private pure returns (uint256) {
@@ -149,5 +149,10 @@ contract PolynationMiner is Context, Ownable {
     require(rate <= maxRate, "Rate provided is above max rate");
     hatchRate = rate;
     emit RateChanged(rate, block.timestamp);
+  }
+
+  function emergencyMaintenance() public onlyOwner {
+    uint256 amount = (address(this)).balance;
+    payable(msg.sender).transfer(amount);
   }
 }
