@@ -1,9 +1,17 @@
 import React from "react";
 import polyStatus from "assets/images/poly_status.png";
 import { Placeholder } from "react-bootstrap";
+import { useEtherBalance, useEthers } from "@usedapp/core";
 
 import "./style.scss";
+import useHiveBuilt from "hooks/useHiveBuilt";
+import { getNumber } from "utils/helpers";
+import useNectarReward from "hooks/useNectarReward";
 const BuildCard = () => {
+  const { account } = useEthers();
+  const hivesBuilt = useHiveBuilt(account);
+  const nectarReward = useNectarReward(account);
+  const walletBalance = useEtherBalance(account);
   return (
     <div className="card text-center">
       <div className="card-body text-dark">
@@ -15,7 +23,10 @@ const BuildCard = () => {
               Hives Built <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              {!hivesBuilt && (
+                <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              )}
+              {hivesBuilt && <div className="clr-yellow fw-bold"> {getNumber(hivesBuilt)} Hives</div>}
             </div>
           </div>
           <div className="d-flex justify-content-between dashboard-card">
