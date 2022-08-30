@@ -21,14 +21,17 @@ const MinerCard = () => {
               Poly Status <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              <span className="normal">Normal</span>
             </div>
           </div>
 
           <div className="d-flex justify-content-between dashboard-card">
             <div>Total Value Locked</div>
             <div>
-              <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              {!contractBalance && (
+                <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
+              )}
+              {contractBalance && <div className="clr-yellow fw-bold"> {utils.formatEther(contractBalance)} Matic</div>}
             </div>
           </div>
 
@@ -43,12 +46,12 @@ const MinerCard = () => {
             <div>
               Daily ROI <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
-            <div className="clr-yellow fw-bold">14.8%</div>
+            <div className="clr-yellow fw-bold">14.28%</div>
           </div>
 
           <div className="d-flex justify-content-between dashboard-card">
             <div>Yearly ROI</div>
-            <div className="clr-yellow fw-bold">14.8%</div>
+            <div className="clr-yellow fw-bold">5214.28%</div>
           </div>
 
           <div className="d-flex justify-content-between dashboard-card">
