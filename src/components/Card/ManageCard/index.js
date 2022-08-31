@@ -3,14 +3,16 @@ import polyStatus from "assets/images/poly_status.png";
 import { useEthers } from "@usedapp/core";
 
 import { Placeholder } from "react-bootstrap";
-
+import Logged from "./Logged";
 import "../style.scss";
 
 const ManageCard = () => {
   const { account } = useEthers();
 
   //   const
-  return (
+  return account ? (
+    <Logged />
+  ) : (
     <div className="card text-center">
       <div className="card-body text-dark">
         <h4 className="card-title_sec">Bee Keeping</h4>

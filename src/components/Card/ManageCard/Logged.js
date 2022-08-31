@@ -25,42 +25,24 @@ import { RbaChain } from "constants/RbaChain";
 const Logged = () => {
   const { account, switchNetwork, chainId, library } = useEthers();
   const hivesBuilt = useHiveBuilt(account);
+  const nectarReward = useNectarReward(account);
   const accountMiner = useMiner(account);
   const walletBalance = useEtherBalance(account);
   const hiveRate = useRate();
 
-  const [estimatedYield, setEstimatedYield] = useState(0);
-  const [inputBalance, setInputBalance] = useState(0);
-
-  const inputRef = useRef(0);
-
+  const contract = new Contract(config.CONTRACT_ADDRESS, MinerAbi, library.getSigner());
   const location = useLocation();
   const reffAddr = queryString.parse(location.search)?.ref;
   const refferalAddress = utils.isAddress(reffAddr) ? reffAddr : "0x0000000000000000000000000000000000000000";
 
-  function handleInput(e) {
-    setInputBalance(e.target.value);
-    setEstimatedYield(hiveRate * e.target.value);
-  }
-
-  function handleButton() {
-    const balanceFormatted = formatEther(walletBalance);
-    setInputBalance(balanceFormatted);
-    setEstimatedYield(hiveRate.mul(walletBalance));
-    inputRef.current.value = balanceFormatted;
-    console.log(inputBalance);
-  }
-  const contract = new Contract(config.CONTRACT_ADDRESS, MinerAbi, library.getSigner());
-
-  function handleBuild() {
+  function handleCompound() {
     if (chainId !== RbaChain.chainId) {
       switchNetwork(RbaChain.chainId);
     }
-    const balanceFormatted = formatEther(walletBalance);
-    if (inputBalance > balanceFormatted) {
+    if (nectarReward < 1) {
       Store.addNotification({
         title: "Error",
-        message: "You cannot buy more than your wallet balance.",
+        message: "You dont have reward to compound.",
         type: "danger",
         insert: "top",
         container: "bottom-right",
@@ -72,15 +54,38 @@ const Logged = () => {
         }
       });
     } else {
-      contract.buyHives(refferalAddress, { value: parseEther(inputBalance) });
+      contract.hatchHives(refferalAddress);
+    }
+  }
+
+  function handleSell() {
+    if (chainId !== RbaChain.chainId) {
+      switchNetwork(RbaChain.chainId);
+    }
+    if (nectarReward < 1) {
+      Store.addNotification({
+        title: "Error",
+        message: "You dont have reward to sell.",
+        type: "danger",
+        insert: "top",
+        container: "bottom-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
+    } else {
+      contract.sellHives();
     }
   }
 
   return (
     <div className="card text-center">
       <div className="card-body text-dark">
-        <h4 className="card-title_sec">Build Apiary</h4>
-        <span className="sub-card-title">Develop your PolyNation</span>
+        <h4 className="card-title_sec">Bee Keeping</h4>
+        <span className="sub-card-title">Manage your PolyNation</span>
         <div className="container">
           <div className="d-flex justify-content-between dashboard-card">
             <div>
@@ -128,43 +133,24 @@ const Logged = () => {
           </div>
           <div className="d-flex justify-content-between dashboard-card mt-3">
             <div>
-              Wallet Balance <img alt="iimage" src={polyStatus} className="poly-info" />
+              Reward Balance <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              {!walletBalance && (
+              {!nectarReward && (
                 <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
               )}
-              {walletBalance && <div className="clr-yellow fw-bold"> {formatNumber(formatEther(walletBalance) * 1)} Matic</div>}
-            </div>
-          </div>
-          <div className="small-form mt-3">
-            <input
-              ref={inputRef}
-              className="text-area"
-              onChange={handleInput}
-              defaultValue={inputBalance}
-              type="text"
-              id="fname"
-              name="input-balance"
-            />
-            <button className="max-btn" onClick={handleButton}>
-              Max
-            </button>
-          </div>
-          <div className="d-flex justify-content-between dashboard-card mt-0">
-            <div>
-              Estimated Yield <img alt="iimage" src={polyStatus} className="poly-info" />
-            </div>
-            <div>
-              <div className="clr-yellow fw-bold"> {formatNumber(estimatedYield * 1)} Hives</div>
+              {nectarReward && <div className="clr-yellow fw-bold"> {formatNumber(formatEther(nectarReward) * 1)} Matic</div>}
             </div>
           </div>
         </div>
       </div>
 
       <div className="edit_cur pd">
-        <span className="btn_edit_page">
-          <button onClick={handleBuild}>Build Hives</button>
+        <span className="btn_edit_page_1">
+          <button onClick={handleCompound}>Compound</button>
+        </span>
+        <span className="btn_edit_page_2">
+          <button onClick={handleSell}>Sell Rewards</button>
         </span>
       </div>
     </div>
