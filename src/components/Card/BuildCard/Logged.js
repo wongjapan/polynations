@@ -1,20 +1,29 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import polyStatus from "assets/images/poly_status.png";
 import { Placeholder } from "react-bootstrap";
-import { useEtherBalance, useEthers } from "@usedapp/core";
+import { useContractFunction, useEtherBalance, useEthers } from "@usedapp/core";
 import { Store } from "react-notifications-component";
 
-import { formatEther } from "ethers/lib/utils";
+import { formatEther, parseEther } from "ethers/lib/utils";
+import { utils } from "ethers";
+import { Contract } from "@ethersproject/contracts";
+
+import config from "constants/config";
+import MinerAbi from "constants/MinerAbi";
+
+import { useLocation } from "react-router";
+import queryString from "query-string";
 
 import "../style.scss";
 import useHiveBuilt from "hooks/useHiveBuilt";
-import { formatNumber, getNumber, nFormatter } from "utils/helpers";
+import { formatNumber, nFormatter } from "utils/helpers";
 import useNectarReward from "hooks/useNectarReward";
 import useMiner from "hooks/useMiner";
 import useRate from "hooks/useRate";
+import { RbaChain } from "constants/RbaChain";
 
 const Logged = () => {
-  const { account } = useEthers();
+  const { account, switchNetwork, chainId, library } = useEthers();
   const hivesBuilt = useHiveBuilt(account);
   const nectarReward = useNectarReward(account);
   const accountMiner = useMiner(account);
@@ -25,6 +34,10 @@ const Logged = () => {
   const [inputBalance, setInputBalance] = useState(0);
 
   const inputRef = useRef(0);
+
+  const location = useLocation();
+  const reffAddr = queryString.parse(location.search)?.ref;
+  const refferalAddress = utils.isAddress(reffAddr) ? reffAddr : "0x0000000000000000000000000000000000000000";
 
   function handleInput(e) {
     setInputBalance(e.target.value);
@@ -38,8 +51,12 @@ const Logged = () => {
     inputRef.current.value = balanceFormatted;
     console.log(inputBalance);
   }
+  const contract = new Contract(config.CONTRACT_ADDRESS, MinerAbi, library.getSigner());
 
   function handleBuild() {
+    if (chainId !== RbaChain.chainId) {
+      switchNetwork(RbaChain.chainId);
+    }
     const balanceFormatted = formatEther(walletBalance);
     if (inputBalance > balanceFormatted) {
       Store.addNotification({
@@ -55,7 +72,8 @@ const Logged = () => {
           onScreen: true
         }
       });
-      console.log("Insufficient balance");
+    } else {
+      contract.buyHives(refferalAddress, { value: parseEther(inputBalance) });
     }
   }
 
