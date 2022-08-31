@@ -3,7 +3,10 @@ import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { ReactNotifications } from "react-notifications-component";
+
 import "./assets/scss/main.scss";
+import "react-notifications-component/dist/theme.css";
 
 import { RbaChain } from "constants/RbaChain";
 
@@ -21,6 +24,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <DAppProvider config={config}>
+      <ReactNotifications />
       <App />
     </DAppProvider>
   </React.StrictMode>

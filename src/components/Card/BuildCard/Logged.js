@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import polyStatus from "assets/images/poly_status.png";
 import { Placeholder } from "react-bootstrap";
 import { useEtherBalance, useEthers } from "@usedapp/core";
+import { Store } from "react-notifications-component";
 
 import { formatEther } from "ethers/lib/utils";
 
@@ -11,6 +12,7 @@ import { formatNumber, getNumber, nFormatter } from "utils/helpers";
 import useNectarReward from "hooks/useNectarReward";
 import useMiner from "hooks/useMiner";
 import useRate from "hooks/useRate";
+
 const Logged = () => {
   const { account } = useEthers();
   const hivesBuilt = useHiveBuilt(account);
@@ -18,6 +20,44 @@ const Logged = () => {
   const accountMiner = useMiner(account);
   const walletBalance = useEtherBalance(account);
   const hiveRate = useRate();
+
+  const [estimatedYield, setEstimatedYield] = useState(0);
+  const [inputBalance, setInputBalance] = useState(0);
+
+  const inputRef = useRef(0);
+
+  function handleInput(e) {
+    setInputBalance(e.target.value);
+    setEstimatedYield(hiveRate * e.target.value);
+  }
+
+  function handleButton() {
+    const balanceFormatted = formatEther(walletBalance);
+    setInputBalance(balanceFormatted);
+    setEstimatedYield(hiveRate.mul(walletBalance));
+    inputRef.current.value = balanceFormatted;
+    console.log(inputBalance);
+  }
+
+  function handleBuild() {
+    const balanceFormatted = formatEther(walletBalance);
+    if (inputBalance > balanceFormatted) {
+      Store.addNotification({
+        title: "Error",
+        message: "You cannot buy more than your wallet balance.",
+        type: "danger",
+        insert: "top",
+        container: "bottom-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
+      console.log("Insufficient balance");
+    }
+  }
 
   return (
     <div className="card text-center">
@@ -81,18 +121,25 @@ const Logged = () => {
             </div>
           </div>
           <div className="small-form mt-3">
-            <input className="text-area" type="text" id="fname" name="fname" />
-            <button className="max-btn">Max</button>
+            <input
+              ref={inputRef}
+              className="text-area"
+              onChange={handleInput}
+              defaultValue={inputBalance}
+              type="text"
+              id="fname"
+              name="input-balance"
+            />
+            <button className="max-btn" onClick={handleButton}>
+              Max
+            </button>
           </div>
           <div className="d-flex justify-content-between dashboard-card mt-0">
             <div>
               Estimated Yield <img alt="iimage" src={polyStatus} className="poly-info" />
             </div>
             <div>
-              {!walletBalance && (
-                <Placeholder className="box-placeholder" style={{ minWidth: "125px" }} bg="secondary" as="div" animation="wave" />
-              )}
-              {walletBalance && <div className="clr-yellow fw-bold"> {formatNumber(formatEther(walletBalance) * 1)} Hives</div>}
+              <div className="clr-yellow fw-bold"> {formatNumber(estimatedYield * 1)} Hives</div>
             </div>
           </div>
         </div>
@@ -100,7 +147,7 @@ const Logged = () => {
 
       <div className="edit_cur pd">
         <span className="btn_edit_page">
-          <button>Build Hives</button>
+          <button onClick={handleBuild}>Build Hives</button>
         </span>
       </div>
     </div>
